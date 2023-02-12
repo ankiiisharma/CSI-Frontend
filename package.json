@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": "https://github.com/Computer-Society-of-India-IPEC/CSI-Frontend.git",
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "parcel public/index.html"
   },
   "author": "CSI IPEC <csiipec17@gmail.com>",
   "license": "MIT",
@@ -18,6 +18,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
-    "process": "^0.11.10"
+    "postcss": "^8.4.21",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.2.6"
   }
 }
