@@ -1,0 +1,23 @@
+{
+  "name": "CSI-Frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Computer-Society-of-India-IPEC/CSI-Frontend.git",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "author": "CSI IPEC <csiipec17@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "parcel": "^2.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.0",
+    "process": "^0.11.10"
+  }
+}
