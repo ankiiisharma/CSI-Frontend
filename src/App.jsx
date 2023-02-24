@@ -1,13 +1,15 @@
 import React from "react";
 import logo from "./images/logo.png";
 
+// Page [ Development ]
+import Events from "./containers/Events";
+
 const App = () => {
-    return (
-      <div>
-        <h1>Hello. This is a parcel react app.</h1>
-        <img src={logo} />
-      </div>
-    );
+  return (
+    <div>
+      <Events />
+    </div>
+  );
 };
 
 export default App;
