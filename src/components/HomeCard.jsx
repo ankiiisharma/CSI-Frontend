@@ -3,7 +3,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const HomeCard = ({Heading, Content, Icon}) => {
     return (
-            <div className='bg-white rounded-xl shadow-md h-96 flex flex-col justify-around relative w-80 flex-shrink-0 '>
+            <div className='bg-white rounded-xl shadow-md h-96 flex flex-col justify-around relative w-80 flex-shrink-0 mx-6'>
                 <img src={Icon} alt='' className='absolute w-50 self-center top-0 transform -translate-y-1/2' />
                 <div className='mt-50 px-30 pt-10 self-center text-2xl text-black font-bold'>
                     {Heading}
