@@ -8,8 +8,8 @@ import Landing from "./containers/Landing";
 const App = () => {
   return (
     <div>
-      {/* <Events /> */}
-      <Landing/>
+      <Events />
+      {/* <Landing/> */}
     </div>
   );
 };

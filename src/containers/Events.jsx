@@ -1,13 +1,112 @@
-// Components
-// Components
-import EventCard from "../components/EventCard";
+import { useState } from "react";
 
-const Events = () => {
+// Components
+import ReactPaginate from "react-paginate";
+import EventCard from "../components/EventCard";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import SearchIcon from "@mui/icons-material/Search";
+
+// Assets
+import events_underline from "../images/events-underline.svg";
+
+// Data
+import dummy_events from "../data/dummy_events";
+import month_names from "../data/month_names";
+
+// Event Cards Mapped
+function Items({ currentItems }) {
   return (
-    <div className="flex flex-col items-center justify-center bg-slate-50">
-      <EventCard />
-      <EventCard />
-      <EventCard />
+    <>
+      {currentItems.map((item) => (
+        <EventCard
+          key={item.id}
+          img={item.img}
+          title={item.title}
+          datetime={item.datetime}
+          location={item.location}
+          description={item.description}
+          price={item.price}
+        />
+      ))}
+    </>
+  );
+}
+
+const Events = ({ itemsPerPage = 4 }) => {
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = dummy_events.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(dummy_events.length / itemsPerPage);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % dummy_events.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center bg-slate-50 p-10">
+      <div className="w-full uppercase flex flex-col items-center justify-center mb-8">
+        <h1 className="font-semibold text-5xl mb-4">Events</h1>
+        <img className="w-[17vw]" src={events_underline} alt="__________" />
+      </div>
+
+      <div className="bg-white flex justify-between items-center mb-10 w-4/5 px-4 py-3 rounded-md">
+        <SearchIcon className="text-[#888888]" />
+        <input
+          type="text"
+          placeholder="Search for events"
+          className="w-5/12 outline-none"
+        />
+        <select className="w-2/12 outline-none text-[#888888]">
+          <option default value="all">
+            All
+          </option>
+          <option value="technical">Technical</option>
+          <option value="non-technical">Non Technical</option>
+        </select>
+
+        <select className="w-2/12 outline-none text-[#888888]">
+          <option default value="all">
+            All
+          </option>
+          {month_names.map((month) => (
+            <option value={month}>{month}</option>
+          ))}
+        </select>
+
+        <button
+          type="submit"
+          className="w-2/12 text-white py-4 rounded-md font-bold bg-gradient-to-t"
+          style={{
+            background: "linear-gradient(180deg, #183882 6.17%, #001649 100%)",
+          }}
+        >
+          SEARCH
+        </button>
+      </div>
+
+      <Items currentItems={currentItems} />
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel={<ArrowForwardIosIcon />}
+        previousLabel={<ArrowBackIosIcon />}
+        pageClassName="bg-white w-12 h-12 flex justify-center items-center rounded-md m-2 shadow-2xl shadow-[#d3e5ea] duration-300"
+        nextClassName="bg-white w-12 h-12 flex justify-center items-center rounded-md m-2 shadow-2xl shadow-[#d3e5ea] duration-300"
+        previousClassName="bg-white w-12 h-12 flex justify-center items-center rounded-md m-2  shadow-2xl shadow-[#d3e5ea] duration-300"
+        breakClassName="font-bold flex justify-center items-center w-12 h-12"
+        activeClassName="bg-[#092155] text-white w-12 h-12 flex justify-center items-center rounded-md"
+        containerClassName="text-[#737373] w-full h-12 flex justify-center items-center m-2"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={1}
+        pageCount={pageCount}
+        renderOnZeroPageCount={null}
+      />
     </div>
   );
 };
