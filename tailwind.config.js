@@ -3,7 +3,19 @@ module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   mode: "jit",
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        header: "url('./images/common/header-bg.svg')",
+      },
+      fontSize: {
+        chip: "10px",
+      },
+      colors: {
+        secondary: {
+          shades1: "#efefef",
+        },
+      },
+    },
   },
   plugins: [],
 };

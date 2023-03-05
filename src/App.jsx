@@ -1,16 +1,21 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import logo from "./images/logo.png";
-
 
 // Page [ Development ]
 import Events from "./containers/Events";
-import Landing from "./containers/Landing";
+import Home from "./containers/Home";
+import MasterLayout from "./components/MasterLayout";
 
 const App = () => {
   return (
     <div>
-      {/* <Events /> */}
-      <Landing/>
+      <Routes>
+        <Route path="/" element={<MasterLayout />}>
+          <Route path="" element={<Home />} />
+          <Route path="events" element={<Events />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
