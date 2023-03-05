@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         header: "url('./images/common/header-bg.svg')",
+        footer: "url('./images/common/footer-bg.svg')",
       },
       fontSize: {
         chip: "10px",

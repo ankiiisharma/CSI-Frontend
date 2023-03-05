@@ -3,7 +3,8 @@ import about from "../images/home-card-1.png";
 import question from "../images/home-card-2.png";
 import award from "../images/home-card-3.png";
 import events_underline from "../images/events-underline.svg";
-import SigContainer from "./SigContainer";
+import SigCarousel from "../components/Home/SigCarousel";
+import midVector from "../images/common/mid-vector.svg";
 
 const Home = () => {
   return (
@@ -30,10 +31,14 @@ const Home = () => {
         />
       </div>
       <div className="w-full uppercase flex flex-col items-center justify-center my-8">
-        <h1 className="my-8 font-semibold text-5xl mb-4">OUR SIGs</h1>
+        <h1 className="my-8 font-semibold text-4xl mb-4">OUR SIGs</h1>
         <img className="w-[17vw]" src={events_underline} alt="__________" />
       </div>
-      <SigContainer />
+      <div className="relative w-full">
+        <SigCarousel />
+        <img src={midVector} alt="vector" className="absolute z-[-1] left-0 top-0" />
+        <img src={midVector} alt="vector" className="absolute z-[-1] right-0 top-0" />
+      </div>
     </div>
   );
 };

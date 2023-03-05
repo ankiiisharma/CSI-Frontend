@@ -1,0 +1,1 @@
+export { sigData } from "./sigs";

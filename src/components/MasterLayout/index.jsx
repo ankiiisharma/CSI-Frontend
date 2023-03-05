@@ -1,4 +1,5 @@
 import Navbar from "../Common/Navbar";
+import Footer from "../Common/Footer";
 import { Outlet } from "react-router-dom";
 
 import homeHeroImage from "../../images/common/home-hero.png";
@@ -35,6 +36,7 @@ const MasterLayout = () => {
         />
       </div>
       <Outlet />
+      <Footer />
     </div>
   );
 };
