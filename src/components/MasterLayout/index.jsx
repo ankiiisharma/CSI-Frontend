@@ -2,11 +2,12 @@ import Navbar from "../Common/Navbar";
 import Footer from "../Common/Footer";
 import { Outlet } from "react-router-dom";
 
-import homeHeroImage from "../../images/common/home-hero.png";
+import { headerData } from "../../constants";
+
 import leftVector from "../../images/common/left-vector.svg"
 import rightVector from "../../images/common/right-vector.svg";
 
-const MasterLayout = () => {
+const MasterLayout = ({ currPath }) => {
   return (
     <div className="w-screen h-screen">
       <div className="w-full h-full bg-header bg-no-repeat bg-contain pt-6 px-10 relative">
@@ -14,15 +15,13 @@ const MasterLayout = () => {
         <div className="flex justify-between items-center">
           <div className="text-white">
             <p className="text-6xl font-semibold uppercase">
-              More than <br /> 10,000 members
+              {headerData[currPath].headerText}
             </p>
             <p className="mt-5 text-base font-regular">
-              CSI has 72 chapters all over India, 511 student branches, and more
-              than 100,000 members including India’s most famous IT industry
-              leaders, brilliant scientists and dedicated academicians.
+              {headerData[currPath].subheaderText}
             </p>
           </div>
-          <img src={homeHeroImage} alt="hero-icon" />
+          <img src={headerData[currPath].imageUrl} alt="hero-icon" className="self-end"/>
         </div>
         <img
           src={leftVector}

@@ -17,10 +17,17 @@ module.exports = {
           from: "#E0C659",
           to: "#C5A318",
         },
+        textColor: {
+          header: "#263238",
+          subheader: "#575757",
+        },
         footerNote: {
           from: "#0C3DA5",
           to: "#092255",
         },
+      },
+      boxShadow: {
+        teamCard: "0 18px 66px 0 rgba(152, 186, 197, 0.27)",
       },
     },
   },
