@@ -1,6 +1,18 @@
+import { useNavigate, useLocation } from "react-router-dom";
+
 import logo from "../../images/logo.png";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const getClasses = (navItem) => {
+    const path = location.pathname;
+    const navPath = "/" + navItem;
+    if (path === navPath) return "text-white text-lg cursor-pointer";
+    else return "text-white/50 text-lg cursor-pointer hover:text-white/80";
+  };
+
   return (
     <nav className="flex justify-between items-center">
       <div className="flex items-center">
@@ -16,16 +28,26 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex justify-evenly items-center gap-8 self-start mt-4">
-        <div className="text-white text-lg cursor-pointer">
+        <div className={getClasses("")} onClick={() => navigate("/")}>
           HOME
         </div>
-        <div className="text-white/50 text-lg cursor-pointer hover:text-white/80">
+        <div className={getClasses("team")} onClick={() => navigate("/team")}>
           OUR TEAM
         </div>
-        <div className="text-white/50 text-lg cursor-pointer hover:text-white/80">
+        <div
+          className={getClasses("events")}
+          onClick={() => navigate("/events")}
+        >
           OUR EVENTS
         </div>
-        <div className="text-white/50 text-lg cursor-pointer hover:text-white/80">
+        <div
+          className="text-white/50 text-lg cursor-pointer hover:text-white/80"
+          onClick={() =>
+            document.querySelector("#footer").scrollIntoView({
+              behavior: "smooth",
+            })
+          }
+        >
           CONTACT US
         </div>
       </div>

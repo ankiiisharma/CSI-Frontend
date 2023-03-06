@@ -14,6 +14,12 @@ module.exports = {
       colors: {
         secondary: {
           shades1: "#efefef",
+          from: "#E0C659",
+          to: "#C5A318",
+        },
+        footerNote: {
+          from: "#0C3DA5",
+          to: "#092255",
         },
       },
     },
