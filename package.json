@@ -1,7 +1,7 @@
 {
   "name": "CSI-Frontend",
   "version": "1.0.0",
-  "main": "index.js",
+  "source": "public/index.html",
   "repository": "https://github.com/Computer-Society-of-India-IPEC/CSI-Frontend.git",
   "scripts": {
     "start": "parcel public/index.html"
