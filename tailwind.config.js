@@ -12,8 +12,12 @@ module.exports = {
         chip: "10px",
       },
       colors: {
+        primary: {
+          shades2: "#C5A318",
+        },
         secondary: {
           shades1: "#efefef",
+          shades2: "#D9D9D9",
           from: "#E0C659",
           to: "#C5A318",
         },

@@ -23,12 +23,12 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <Routes>
-        <Route path="/" element={<MasterLayout currPath={getCurrentPath()} />}>
-          <Route path="" element={<Home />} />
-          <Route path="events" element={<Events />} />
-          <Route path="team" element={<Team />} />
+        <Route path='/' element={<MasterLayout currPath={getCurrentPath()} />}>
+          <Route path='' element={<Home />} />
+          <Route path='events' element={<Events />} />
+          <Route path='team' element={<Team />} />
         </Route>
       </Routes>
     </div>

@@ -18,7 +18,7 @@ const HomeCard = ({ Heading, Content, Icon }) => {
         </p>
       </div>
       <p className="pt-6 text-md flex justify-center items-center">
-        <p className="text-yellow-500 flex items-center justify-center cursor-pointer">
+        <p className="text-primary-shades2 flex items-center justify-center cursor-pointer">
           <span className="mr-1">More Details</span>
           <span>
             <ArrowForwardIosIcon />

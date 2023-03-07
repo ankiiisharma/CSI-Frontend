@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // Components
 import ReactPaginate from "react-paginate";
-import EventCard from "../components/EventCard";
+import EventCard from "../components/Events/EventCard";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SearchIcon from "@mui/icons-material/Search";
@@ -50,29 +50,30 @@ const Events = ({ itemsPerPage = 4 }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-slate-50 p-10">
-      <div className="w-full uppercase flex flex-col items-center justify-center mb-8">
-        <h1 className="font-semibold text-5xl mb-4">Events</h1>
-        <img className="w-[17vw]" src={events_underline} alt="__________" />
+    <div className='flex flex-col items-center justify-center bg-slate-50 p-10'>
+      <div className='w-full uppercase flex flex-col items-center justify-center mb-8'>
+        <h1 className='font-semibold text-4xl mb-4'>Events</h1>
+        <img className='' src={events_underline} alt='__________' />
       </div>
 
-      <div className="bg-white flex justify-between items-center mb-10 w-4/5 px-4 py-3 rounded-md">
-        <SearchIcon className="text-[#888888]" />
+      <div className='bg-white flex justify-between items-center mb-10 w-4/5 px-4 py-1 rounded-md shadow-teamCard'>
+        <SearchIcon className='text-[#888888]' />
         <input
-          type="text"
-          placeholder="Search for events"
-          className="w-5/12 outline-none"
+          type='text'
+          placeholder='Search for events'
+          className='w-5/12 outline-none border-r border-secondary-shades2'
         />
-        <select className="w-2/12 outline-none text-[#888888]">
-          <option default value="all">
+
+        <select className='w-2/12 outline-none text-[#888888] border-r border-secondary-shades2'>
+          <option default value='all'>
             All
           </option>
-          <option value="technical">Technical</option>
-          <option value="non-technical">Non Technical</option>
+          <option value='technical'>Technical</option>
+          <option value='non-technical'>Non Technical</option>
         </select>
 
-        <select className="w-2/12 outline-none text-[#888888]">
-          <option default value="all">
+        <select className='w-2/12 outline-none text-[#888888]'>
+          <option default value='all'>
             All
           </option>
           {month_names.map((month) => (
@@ -81,8 +82,8 @@ const Events = ({ itemsPerPage = 4 }) => {
         </select>
 
         <button
-          type="submit"
-          className="w-2/12 text-white py-4 rounded-md font-bold bg-gradient-to-t"
+          type='submit'
+          className='w-2/12 text-white py-3 rounded-md font-bold bg-gradient-to-t'
           style={{
             background: "linear-gradient(180deg, #183882 6.17%, #001649 100%)",
           }}
@@ -92,21 +93,21 @@ const Events = ({ itemsPerPage = 4 }) => {
       </div>
 
       <Items currentItems={currentItems} />
-      <ReactPaginate
-        breakLabel="..."
+      {/* <ReactPaginate
+        breakLabel='...'
         nextLabel={<ArrowForwardIosIcon />}
         previousLabel={<ArrowBackIosIcon />}
-        pageClassName="bg-white w-12 h-12 flex justify-center items-center rounded-md m-2 shadow-2xl shadow-[#d3e5ea] duration-300"
-        nextClassName="bg-white w-12 h-12 flex justify-center items-center rounded-md m-2 shadow-2xl shadow-[#d3e5ea] duration-300"
-        previousClassName="bg-white w-12 h-12 flex justify-center items-center rounded-md m-2  shadow-2xl shadow-[#d3e5ea] duration-300"
-        breakClassName="font-bold flex justify-center items-center w-12 h-12"
-        activeClassName="bg-[#092155] text-white w-12 h-12 flex justify-center items-center rounded-md"
-        containerClassName="text-[#737373] w-full h-12 flex justify-center items-center m-2"
+        pageClassName='bg-white w-12 h-12 flex justify-center items-center rounded-md m-2 shadow-2xl shadow-[#d3e5ea] duration-300'
+        nextClassName='bg-white w-12 h-12 flex justify-center items-center rounded-md m-2 shadow-2xl shadow-[#d3e5ea] duration-300'
+        previousClassName='bg-white w-12 h-12 flex justify-center items-center rounded-md m-2  shadow-2xl shadow-[#d3e5ea] duration-300'
+        breakClassName='font-bold flex justify-center items-center w-12 h-12'
+        activeClassName='bg-[#092155] text-white w-12 h-12 flex justify-center items-center rounded-md'
+        containerClassName='text-[#737373] w-full h-12 flex justify-center items-center m-2'
         onPageChange={handlePageClick}
         pageRangeDisplayed={1}
         pageCount={pageCount}
         renderOnZeroPageCount={null}
-      />
+      /> */}
     </div>
   );
 };
