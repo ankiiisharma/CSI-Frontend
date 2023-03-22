@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useFetch from "../utils/useFetch";
 
 // Components
 import ReactPaginate from "react-paginate";
@@ -6,6 +7,7 @@ import EventCard from "../components/Events/EventCard";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SearchIcon from "@mui/icons-material/Search";
+import CircularProgress from '@mui/material/CircularProgress';
 
 // Assets
 import events_underline from "../images/events-underline.svg";
@@ -21,12 +23,13 @@ function Items({ currentItems }) {
       {currentItems.map((item) => (
         <EventCard
           key={item.id}
-          img={item.img}
-          title={item.title}
-          datetime={item.datetime}
-          location={item.location}
-          description={item.description}
-          price={item.price}
+          img={`https://drive.google.com/uc?export=view&id=${item.Poster_link}`}
+          title={item.name}
+          datetime={item.Date}
+          location={item.venue}
+          description={item.Description}
+          regLink={item.reg_link}
+          price={item.price ?? "FREE"}
         />
       ))}
     </>
@@ -36,8 +39,9 @@ function Items({ currentItems }) {
 const Events = ({ itemsPerPage = 4 }) => {
   const [itemOffset, setItemOffset] = useState(0);
 
+  const { data, error, isLoading } = useFetch("all/events/");
+
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = dummy_events.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(dummy_events.length / itemsPerPage);
 
   // Invoke when user click to request another page.
@@ -48,6 +52,8 @@ const Events = ({ itemsPerPage = 4 }) => {
     );
     setItemOffset(newOffset);
   };
+
+  if (error) return "";
 
   return (
     <div className='flex flex-col items-center justify-center bg-slate-50 p-10'>
@@ -92,7 +98,7 @@ const Events = ({ itemsPerPage = 4 }) => {
         </button>
       </div>
 
-      <Items currentItems={currentItems} />
+      {!!isLoading ? <CircularProgress /> : <Items currentItems={data} />}
       {/* <ReactPaginate
         breakLabel='...'
         nextLabel={<ArrowForwardIosIcon />}
