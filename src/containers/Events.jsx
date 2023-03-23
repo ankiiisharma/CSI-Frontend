@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useFetch from "../utils/useFetch";
 
 // Components
@@ -6,7 +6,7 @@ import ReactPaginate from "react-paginate";
 import EventCard from "../components/Events/EventCard";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import { BiSearch } from "react-icons/bi";
-import { Loader } from '@mantine/core';
+import { Loader } from "@mantine/core";
 
 // Assets
 import events_underline from "../images/events-underline.svg";
@@ -36,13 +36,43 @@ function Items({ currentItems }) {
 
 const Events = ({ itemsPerPage = 4 }) => {
   const [itemOffset, setItemOffset] = useState(0);
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [filters, setFilters] = useState({
+    category: "all",
+    searchString: "",
+    month: "",
+  });
+
+  const initialRender = useRef(true);
 
   const { data, error, isLoading } = useFetch("all/events/");
 
-  const endOffset = itemOffset + itemsPerPage;
-  // const pageCount = Math.ceil(dummy_events.length / itemsPerPage);
+  useEffect(() => {
+    if (!isLoading) setEvents(data);
+  }, [isLoading]);
 
-  // Invoke when user click to request another page.
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
+    let updatedEvents = [];
+    switch (filters.category) {
+      case "all":
+        updatedEvents = data;
+        break;
+
+      default:
+        updatedEvents = data.filter(
+          (event) => event.category === filters.category
+        );
+    }
+    setEvents(updatedEvents)
+  }, [filters]);
+
+  const endOffset = itemOffset + itemsPerPage;
+
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % dummy_events.length;
     console.log(
@@ -52,32 +82,38 @@ const Events = ({ itemsPerPage = 4 }) => {
   };
 
   if (error) return "";
+  console.log(events);
 
   return (
-    <div className="flex flex-col items-center justify-center bg-slate-50 p-10">
-      <div className="w-full uppercase flex flex-col items-center justify-center mb-8">
-        <h1 className="font-semibold text-4xl mb-4">Events</h1>
-        <img className="" src={events_underline} alt="__________" />
+    <div className='flex flex-col items-center justify-center bg-slate-50 p-10'>
+      <div className='w-full uppercase flex flex-col items-center justify-center mb-8'>
+        <h1 className='font-semibold text-4xl mb-4'>Events</h1>
+        <img className='' src={events_underline} alt='__________' />
       </div>
 
-      <div className="bg-white flex justify-between items-center mb-10 w-4/5 px-4 py-1 rounded-md shadow-teamCard">
-        <BiSearch className="text-[#888888]" fontSize={24} />
+      <div className='bg-white flex justify-between items-center mb-10 w-4/5 px-4 py-1 rounded-md shadow-teamCard'>
+        <BiSearch className='text-[#888888]' fontSize={24} />
         <input
-          type="text"
-          placeholder="Search for events"
-          className="w-5/12 outline-none border-r border-secondary-shades2"
+          type='text'
+          placeholder='Search for events'
+          className='w-5/12 outline-none border-r border-secondary-shades2'
         />
 
-        <select className="w-2/12 outline-none text-[#888888] border-r border-secondary-shades2">
-          <option default value="all">
+        <select
+          className='w-2/12 outline-none text-[#888888] border-r border-secondary-shades2'
+          onChange={(e) =>
+            setFilters((prev) => ({ ...prev, category: e.target.value }))
+          }
+        >
+          <option default value='all'>
             All
           </option>
-          <option value="technical">Technical</option>
-          <option value="non-technical">Non Technical</option>
+          <option value='Tech'>Technical</option>
+          <option value='Non-Tech'>Non Technical</option>
         </select>
 
-        <select className="w-2/12 outline-none text-[#888888]">
-          <option default value="all">
+        <select className='w-2/12 outline-none text-[#888888]'>
+          <option default value='all'>
             All
           </option>
           {month_names.map((month) => (
@@ -86,8 +122,8 @@ const Events = ({ itemsPerPage = 4 }) => {
         </select>
 
         <button
-          type="submit"
-          className="w-2/12 text-white py-3 rounded-md font-bold bg-gradient-to-t"
+          type='submit'
+          className='w-2/12 text-white py-3 rounded-md font-bold bg-gradient-to-t'
           style={{
             background: "linear-gradient(180deg, #183882 6.17%, #001649 100%)",
           }}
@@ -96,7 +132,13 @@ const Events = ({ itemsPerPage = 4 }) => {
         </button>
       </div>
 
-      {!!isLoading ? <Loader /> : <Items currentItems={data} />}
+      {!!isLoading ? (
+        <Loader />
+      ) : events.length > 0 ? (
+        <Items currentItems={events} />
+      ) : (
+        <p className="text-xl">No Events found for your Selection!!</p>
+      )}
       {/* <ReactPaginate
         breakLabel='...'
         nextLabel={<ArrowForwardIosIcon />}

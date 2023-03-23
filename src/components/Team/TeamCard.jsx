@@ -4,9 +4,9 @@ const TeamCard = ({ data }) => {
   return (
     <div className='shadow-teamCard w-[300px] flex flex-col items-center justiy-center py-6 rounded-xl'>
       <img
-        src='https://i.pravatar.cc/150'
+        src={`https://ik.imagekit.io/cj8tverfiv/${data?.imgage_key}?updatedAt=1679595396784&tr=w-1080%2Ch-1080%2Cfo-auto`}
         alt='member-photo'
-        className='rounded-full'
+        className='rounded-full w-[150px] h-[150px] object-cover'
       />
       <p className='text-textColor-header text-lg font-medium mt-2'>
         {data?.name}
@@ -25,7 +25,7 @@ const TeamCard = ({ data }) => {
         </a> */}
         <a
           className='rounded-full w-10 h-10 bg-[#898989]/[.19] flex items-center justify-center cursor-pointer'
-          href={data?.linkdin}
+          href={`https://www.linkedin.com/in/${data?.linkdin}/`}
           target='_blank'
         >
           <AiFillLinkedin fontSize={24} />

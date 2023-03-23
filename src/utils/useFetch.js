@@ -17,7 +17,15 @@ const fetcher = async (url) => {
   return res.json();
 };
 const useFetch = (url) => {
-  const { data, error, isLoading } = useSWR(`${config.baseUrl + url}`, fetcher);
+  const { data, error, isLoading } = useSWR(
+    `${config.baseUrl + url}`,
+    fetcher,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
 
   return {
     data,
