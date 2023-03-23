@@ -1,6 +1,6 @@
 export const sigData = [
   {
-    id: "1",
+    id: "Python",
     name: "SIG PYTHON",
     iconUrl:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
@@ -11,7 +11,7 @@ export const sigData = [
     },
   },
   {
-    id: "2",
+    id: "C++ & DS",
     name: "SIG C++ & DATA STRUCTURES",
     iconUrl:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
@@ -22,7 +22,7 @@ export const sigData = [
     },
   },
   {
-    id: "3",
+    id: "Web Development",
     name: "SIG WEB DEVELOPMENT",
     iconUrl:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
@@ -33,7 +33,7 @@ export const sigData = [
     },
   },
   {
-    id: "4",
+    id: "Flutter",
     name: "SIG FLUTTER",
     iconUrl:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
@@ -44,7 +44,7 @@ export const sigData = [
     },
   },
   {
-    id: "5",
+    id: "Java",
     name: "SIG JAVA",
     iconUrl:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",

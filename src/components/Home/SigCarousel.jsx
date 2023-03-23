@@ -1,16 +1,32 @@
+import { useRef } from "react";
 import { Carousel } from "@mantine/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 import { sigData } from "../../constants";
 
 import { HiOutlineUserGroup } from "react-icons/hi";
 
-const SigCarousel = () => {
+const SigCarousel = ({ sigs }) => {
+  const autoplay = useRef(Autoplay({ delay: 2000 }));
+
   return (
     <div className="flex justify-center items-center w-full">
-      <Carousel maw={300} mx="auto" withIndicators height="100%" loop>
+      <Carousel
+        maw={300}
+        mx="auto"
+        withIndicators
+        height="100%"
+        loop
+        plugins={[autoplay.current]}
+        onMouseEnter={autoplay.current.stop}
+        onMouseLeave={autoplay.current.reset}
+      >
         {sigData.map((sig) => (
           <Carousel.Slide>
-            <SigCard data={sig} />
+            <SigCard
+              data={sig}
+              syllabus={sigs.filter((ele) => ele.name === sig.id)[0]?.Syllabus}
+            />
           </Carousel.Slide>
         ))}
       </Carousel>
@@ -18,7 +34,7 @@ const SigCarousel = () => {
   );
 };
 
-const SigCard = ({ data }) => {
+const SigCard = ({ data, syllabus }) => {
   return (
     <div
       className="rounded-md w-[300px] h-[300px] py-3 px-5 flex flex-col justify-between items-center relative"
@@ -35,9 +51,13 @@ const SigCard = ({ data }) => {
           height={48}
         />
       </div>
-      <button className="mr-auto text-base font-medium py-1 px-3 border border-white text-white uppercase">
+      <a
+        className="mr-auto text-base font-medium py-1 px-3 border border-white text-white uppercase"
+        href={`https://drive.google.com/file/d/${syllabus}/view?usp=sharing`}
+        target="_blank"
+      >
         Read syllabus
-      </button>
+      </a>
       <div className="w-1/3 h-[100px] border-t border-l rounded-tl-lg border-white absolute left-2 top-2"></div>
       <div className="w-1/3 h-[100px] border-b border-r rounded-br-lg border-white absolute right-2 bottom-2"></div>
     </div>

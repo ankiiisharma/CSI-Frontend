@@ -7,6 +7,8 @@ import Team from "./containers/Team";
 import Events from "./containers/Events";
 import Home from "./containers/Home";
 import MasterLayout from "./components/MasterLayout";
+import NotFound from "./containers/NotFound";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -23,15 +25,21 @@ const App = () => {
   };
 
   return (
-    <div className='overflow-x-hidden'>
-      <Routes>
-        <Route path='/' element={<MasterLayout currPath={getCurrentPath()} />}>
-          <Route path='' element={<Home />} />
-          <Route path='events' element={<Events />} />
-          <Route path='team' element={<Team />} />
-        </Route>
-      </Routes>
-    </div>
+    <ErrorBoundary>
+      <div className="overflow-x-hidden">
+        <Routes>
+          <Route
+            path="/"
+            element={<MasterLayout currPath={getCurrentPath()} />}
+          >
+            <Route path="" element={<Home />} />
+            <Route path="events" element={<Events />} />
+            <Route path="team" element={<Team />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </ErrorBoundary>
   );
 };
 
