@@ -1,13 +1,17 @@
-import Carousel from "react-material-ui-carousel";
-import { HiOutlineUserGroup } from "react-icons/hi";
+import { Carousel } from "@mantine/carousel";
+
 import { sigData } from "../../constants";
+
+import { HiOutlineUserGroup } from "react-icons/hi";
 
 const SigCarousel = () => {
   return (
     <div className="flex justify-center items-center w-full">
-      <Carousel className="w-[300px]">
+      <Carousel maw={300} mx="auto" withIndicators height="100%" loop>
         {sigData.map((sig) => (
-          <SigCard data={sig} />
+          <Carousel.Slide>
+            <SigCard data={sig} />
+          </Carousel.Slide>
         ))}
       </Carousel>
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { GoChevronRight } from "react-icons/go";
 
 const HomeCard = ({ Heading, Content, Icon }) => {
   return (
@@ -21,7 +21,7 @@ const HomeCard = ({ Heading, Content, Icon }) => {
         <p className="text-primary-shades2 flex items-center justify-center cursor-pointer">
           <span className="mr-1">More Details</span>
           <span>
-            <ArrowForwardIosIcon />
+            <GoChevronRight fontSize="18" />
           </span>
         </p>
       </p>

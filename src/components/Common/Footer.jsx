@@ -8,7 +8,7 @@ import {
   AiOutlineRight,
 } from "react-icons/ai";
 import footerVector from "../../images/common/footer-vector.svg";
-import Textarea from "@mui/joy/Textarea";
+import { Textarea } from '@mantine/core';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -92,11 +92,12 @@ const Footer = () => {
         <p className="text-base text-white uppercase font-semibold text-lg">
           Write to us
         </p>
-        <div className="bg-[#C5A318] w-1/2 h-[2px]"></div>
+        <div className="bg-[#C5A318] w-3/4 min-h-[2px]"></div>
         <Textarea
-          placeholder="Type anything…"
-          minRows={3}
-          className="mt-4 w-3/4"
+          placeholder="Write something..."
+          autosize
+          minRows={4}
+          sx={{ width: "80%", marginTop: "1rem" }}
         />
         <button className="bg-gradient-to-r from-secondary-from to-secondary-to rounded-md text-white font-medium px-3 py-1 w-1/4 mt-6">
           Submit
@@ -105,7 +106,11 @@ const Footer = () => {
       <div className="self-end bg-gradient-to-r from-footerNote-from to-footerNote-to px-4 py-2 rounded-tl-2xl rounded-tr-2xl w-full text-center col-span-5 relative z-10">
         <p className="text-white text-sm">Made by CSI Fam ❤️</p>
       </div>
-      <img src={footerVector} alt="vector" className="absolute right-0 bottom-0"/>
+      <img
+        src={footerVector}
+        alt="vector"
+        className="absolute right-0 bottom-0"
+      />
     </div>
   );
 };

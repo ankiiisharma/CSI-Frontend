@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useFetch from "../utils/useFetch";
 
 import TeamCard from "../components/Team/TeamCard";
-import CircularProgress from "@mui/material/CircularProgress";
+import { Loader } from "@mantine/core";
 
 import events_underline from "../images/events-underline.svg";
 
@@ -16,7 +16,6 @@ const Team = () => {
 
   useEffect(() => {
     if (data && data.length > 0) {
-      console.log(data);
       const primeCoreMembers = data.filter(
         (ele) => ele.type_member === "prime-core"
       );
@@ -34,36 +33,36 @@ const Team = () => {
 
   if (isLoading)
     return (
-      <div className='w-full h-1/2 flex items-center justify-center'>
-        <CircularProgress />
+      <div className="w-full h-1/2 flex items-center justify-center">
+        <Loader />
       </div>
     );
 
   return (
-    <div className='mb-8'>
-      <div className='w-full uppercase flex flex-col items-center justify-center mb-8'>
-        <h1 className='my-8 font-semibold text-4xl mb-1'>Prime Core</h1>
-        <img className='w-[17vw]' src={events_underline} alt='__________' />
+    <div className="mb-8">
+      <div className="w-full uppercase flex flex-col items-center justify-center mb-8">
+        <h1 className="my-8 font-semibold text-4xl mb-1">Prime Core</h1>
+        <img className="w-[17vw]" src={events_underline} alt="__________" />
       </div>
-      <div className='grid gap-4 grid-cols-3 grid-rows-3 justify-items-center items-center'>
+      <div className="grid gap-4 grid-cols-3 grid-rows-3 justify-items-center items-center">
         {teamData?.primeCore.map((member) => (
           <TeamCard data={member} key={member.id} />
         ))}
       </div>
-      <div className='w-full uppercase flex flex-col items-center justify-center mb-8'>
-        <h1 className='my-8 font-semibold text-4xl mb-1'>Core</h1>
-        <img className='w-[17vw]' src={events_underline} alt='__________' />
+      <div className="w-full uppercase flex flex-col items-center justify-center mb-8">
+        <h1 className="my-8 font-semibold text-4xl mb-1">Core</h1>
+        <img className="w-[17vw]" src={events_underline} alt="__________" />
       </div>
-      <div className='grid gap-4 grid-cols-3 grid-rows-3 justify-items-center items-center'>
+      <div className="grid gap-4 grid-cols-3 grid-rows-3 justify-items-center items-center">
         {teamData?.core.map((member) => (
           <TeamCard data={member} key={member.id} />
         ))}
       </div>
-      <div className='w-full uppercase flex flex-col items-center justify-center mb-8 mt-4'>
-        <h1 className='my-8 font-semibold text-4xl mb-1'>Sub Heads</h1>
-        <img className='w-[17vw]' src={events_underline} alt='__________' />
+      <div className="w-full uppercase flex flex-col items-center justify-center mb-8 mt-4">
+        <h1 className="my-8 font-semibold text-4xl mb-1">Sub Heads</h1>
+        <img className="w-[17vw]" src={events_underline} alt="__________" />
       </div>
-      <div className='grid gap-4 grid-cols-3 grid-rows-3 justify-items-center items-center'>
+      <div className="grid gap-4 grid-cols-3 grid-rows-3 justify-items-center items-center">
         {teamData?.subheads.map((member) => (
           <TeamCard data={member} key={member.id} />
         ))}

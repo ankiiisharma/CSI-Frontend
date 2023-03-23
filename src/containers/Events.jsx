@@ -4,10 +4,9 @@ import useFetch from "../utils/useFetch";
 // Components
 import ReactPaginate from "react-paginate";
 import EventCard from "../components/Events/EventCard";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import SearchIcon from "@mui/icons-material/Search";
-import CircularProgress from '@mui/material/CircularProgress';
+import { GoChevronLeft, GoChevronRight } from "react-icons/go";
+import { BiSearch } from "react-icons/bi";
+import { Loader } from '@mantine/core';
 
 // Assets
 import events_underline from "../images/events-underline.svg";
@@ -56,30 +55,30 @@ const Events = ({ itemsPerPage = 4 }) => {
   if (error) return "";
 
   return (
-    <div className='flex flex-col items-center justify-center bg-slate-50 p-10'>
-      <div className='w-full uppercase flex flex-col items-center justify-center mb-8'>
-        <h1 className='font-semibold text-4xl mb-4'>Events</h1>
-        <img className='' src={events_underline} alt='__________' />
+    <div className="flex flex-col items-center justify-center bg-slate-50 p-10">
+      <div className="w-full uppercase flex flex-col items-center justify-center mb-8">
+        <h1 className="font-semibold text-4xl mb-4">Events</h1>
+        <img className="" src={events_underline} alt="__________" />
       </div>
 
-      <div className='bg-white flex justify-between items-center mb-10 w-4/5 px-4 py-1 rounded-md shadow-teamCard'>
-        <SearchIcon className='text-[#888888]' />
+      <div className="bg-white flex justify-between items-center mb-10 w-4/5 px-4 py-1 rounded-md shadow-teamCard">
+        <BiSearch className="text-[#888888]" fontSize={24} />
         <input
-          type='text'
-          placeholder='Search for events'
-          className='w-5/12 outline-none border-r border-secondary-shades2'
+          type="text"
+          placeholder="Search for events"
+          className="w-5/12 outline-none border-r border-secondary-shades2"
         />
 
-        <select className='w-2/12 outline-none text-[#888888] border-r border-secondary-shades2'>
-          <option default value='all'>
+        <select className="w-2/12 outline-none text-[#888888] border-r border-secondary-shades2">
+          <option default value="all">
             All
           </option>
-          <option value='technical'>Technical</option>
-          <option value='non-technical'>Non Technical</option>
+          <option value="technical">Technical</option>
+          <option value="non-technical">Non Technical</option>
         </select>
 
-        <select className='w-2/12 outline-none text-[#888888]'>
-          <option default value='all'>
+        <select className="w-2/12 outline-none text-[#888888]">
+          <option default value="all">
             All
           </option>
           {month_names.map((month) => (
@@ -88,8 +87,8 @@ const Events = ({ itemsPerPage = 4 }) => {
         </select>
 
         <button
-          type='submit'
-          className='w-2/12 text-white py-3 rounded-md font-bold bg-gradient-to-t'
+          type="submit"
+          className="w-2/12 text-white py-3 rounded-md font-bold bg-gradient-to-t"
           style={{
             background: "linear-gradient(180deg, #183882 6.17%, #001649 100%)",
           }}
@@ -98,7 +97,7 @@ const Events = ({ itemsPerPage = 4 }) => {
         </button>
       </div>
 
-      {!!isLoading ? <CircularProgress /> : <Items currentItems={data} />}
+      {!!isLoading ? <Loader /> : <Items currentItems={data} />}
       {/* <ReactPaginate
         breakLabel='...'
         nextLabel={<ArrowForwardIosIcon />}
