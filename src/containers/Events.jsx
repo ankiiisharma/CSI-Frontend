@@ -12,7 +12,6 @@ import { Loader } from '@mantine/core';
 import events_underline from "../images/events-underline.svg";
 
 // Data
-import dummy_events from "../data/dummy_events";
 import month_names from "../data/month_names";
 
 // Event Cards Mapped
@@ -41,7 +40,7 @@ const Events = ({ itemsPerPage = 4 }) => {
   const { data, error, isLoading } = useFetch("all/events/");
 
   const endOffset = itemOffset + itemsPerPage;
-  const pageCount = Math.ceil(dummy_events.length / itemsPerPage);
+  // const pageCount = Math.ceil(dummy_events.length / itemsPerPage);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
