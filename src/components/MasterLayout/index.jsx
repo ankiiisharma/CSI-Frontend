@@ -15,7 +15,7 @@ const MasterLayout = ({ currPath }) => {
     <div className='w-screen h-screen'>
       <div className='w-full h-full desktop:bg-header desktop:bg-no-repeat desktop:bg-cover pt-6 px-10 relative phone:bg-mobileHeader phone:flex phone:justify-center phone:items-center'>
         {isSmallScreen ? <SideDrawer /> : <Navbar />}
-        <div className='flex justify-between items-center phone:flex-col phone:gap-32'>
+        <div className='flex justify-between items-center phone:flex-col phone:gap-24'>
           <div className='text-white'>
             <p className='text-6xl font-semibold uppercase'>
               {headerData[currPath].headerText}
