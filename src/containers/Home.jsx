@@ -14,7 +14,7 @@ const Home = () => {
   const { data, isLoading, error } = useFetch("sig/all/");
   return (
     <div className="flex flex-col items-center justify-center p-10">
-      <div className="px-8 flex flex-row items-center justify-center">
+      <div className="px-8 flex flex-row items-center justify-center phone:flex-col phone:gap-20">
         <HomeCard
           Icon={about}
           Heading="About Us"
@@ -44,12 +44,12 @@ const Home = () => {
         <img
           src={midVector}
           alt="vector"
-          className="absolute z-[-1] left-0 top-0"
+          className="absolute z-[-1] left-0 top-0 phone:-left-10"
         />
         <img
           src={midVector}
           alt="vector"
-          className="absolute z-[-1] right-0 top-0"
+          className="absolute z-[-1] right-0 top-0 phone:-right-12"
         />
       </div>
     </div>
