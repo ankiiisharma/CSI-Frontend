@@ -44,7 +44,7 @@ const Team = () => {
         <h1 className="my-8 font-semibold text-4xl mb-1">Prime Core</h1>
         <img className="w-[17vw]" src={events_underline} alt="__________" />
       </div>
-      <div className="grid gap-4 grid-cols-3 grid-rows-3 justify-items-center items-center">
+      <div className="grid gap-4 grid-cols-teamCards justify-items-center items-center">
         {teamData?.primeCore.map((member) => (
           <TeamCard data={member} key={member.id} />
         ))}
@@ -53,7 +53,7 @@ const Team = () => {
         <h1 className="my-8 font-semibold text-4xl mb-1">Core</h1>
         <img className="w-[17vw]" src={events_underline} alt="__________" />
       </div>
-      <div className="grid gap-4 grid-cols-3 grid-rows-3 justify-items-center items-center">
+      <div className="grid gap-4 grid-cols-teamCards justify-items-center items-center">
         {teamData?.core.map((member) => (
           <TeamCard data={member} key={member.id} />
         ))}
@@ -62,7 +62,7 @@ const Team = () => {
         <h1 className="my-8 font-semibold text-4xl mb-1">Sub Heads</h1>
         <img className="w-[17vw]" src={events_underline} alt="__________" />
       </div>
-      <div className="grid gap-4 grid-cols-3 grid-rows-3 justify-items-center items-center">
+      <div className="grid gap-4 grid-cols-teamCards justify-items-center items-center">
         {teamData?.subheads.map((member) => (
           <TeamCard data={member} key={member.id} />
         ))}

@@ -82,16 +82,15 @@ const Events = ({ itemsPerPage = 4 }) => {
   };
 
   if (error) return "";
-  console.log(events);
 
   return (
-    <div className='flex flex-col items-center justify-center bg-slate-50 p-10'>
+    <div className='flex flex-col items-center justify-center p-10'>
       <div className='w-full uppercase flex flex-col items-center justify-center mb-8'>
         <h1 className='font-semibold text-4xl mb-4'>Events</h1>
         <img className='' src={events_underline} alt='__________' />
       </div>
 
-      <div className='bg-white flex justify-between items-center mb-10 w-4/5 px-4 py-1 rounded-md shadow-teamCard'>
+      <div className='bg-white border border-[#e3e3e3] flex justify-between items-center mb-10 w-4/5 px-4 py-1 rounded-md shadow-teamCard phone:hidden'>
         <BiSearch className='text-[#888888]' fontSize={24} />
         <input
           type='text'
@@ -106,7 +105,7 @@ const Events = ({ itemsPerPage = 4 }) => {
           }
         >
           <option default value='all'>
-            All
+            Select Category
           </option>
           <option value='Tech'>Technical</option>
           <option value='Non-Tech'>Non Technical</option>
@@ -114,7 +113,7 @@ const Events = ({ itemsPerPage = 4 }) => {
 
         <select className='w-2/12 outline-none text-[#888888]'>
           <option default value='all'>
-            All
+            Select Month
           </option>
           {month_names.map((month) => (
             <option value={month}>{month}</option>
@@ -131,13 +130,55 @@ const Events = ({ itemsPerPage = 4 }) => {
           SEARCH
         </button>
       </div>
+      <div className='desktop:hidden w-full'>
+        <div className='flex items-center bg-white px-3 rounded-md border border-[#e3e3e3]'>
+          <BiSearch className='text-[#888888]' fontSize={24} />
+          <input
+            type='text'
+            placeholder='Search for events'
+            className='w-full outline-none py-2 ml-2'
+          />
+        </div>
+        <div className='flex items-center gap-3 mt-3'>
+          <select
+            className='flex-1 outline-none text-[#888888] py-2 px-3 rounded-md border border-[#e3e3e3]'
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, category: e.target.value }))
+            }
+          >
+            <option default value='all'>
+              Select Category
+            </option>
+            <option value='Tech'>Technical</option>
+            <option value='Non-Tech'>Non Technical</option>
+          </select>
+
+          <select className='flex-1 outline-none text-[#888888] py-2 px-3 rounded-md border border-[#e3e3e3]'>
+            <option default value='all'>
+              Select month
+            </option>
+            {month_names.map((month) => (
+              <option value={month}>{month}</option>
+            ))}
+          </select>
+        </div>
+        <button
+          type='submit'
+          className='text-white py-3 rounded-md font-bold w-full mt-3'
+          style={{
+            background: "linear-gradient(180deg, #183882 6.17%, #001649 100%)",
+          }}
+        >
+          SEARCH
+        </button>
+      </div>
 
       {!!isLoading ? (
         <Loader />
       ) : events.length > 0 ? (
         <Items currentItems={events} />
       ) : (
-        <p className="text-xl">No Events found for your Selection!!</p>
+        <p className='text-xl'>No Events found for your Selection!!</p>
       )}
       {/* <ReactPaginate
         breakLabel='...'

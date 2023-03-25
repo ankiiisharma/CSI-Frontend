@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         header: "url('./images/common/header-bg.svg')",
+        mobileHeader: "linear-gradient(#183882,#001649)",
         footer: "url('./images/common/footer-bg.svg')",
       },
       fontSize: {
@@ -33,6 +34,13 @@ module.exports = {
       boxShadow: {
         teamCard: "0 18px 66px 0 rgba(152, 186, 197, 0.27)",
       },
+      gridTemplateColumns: {
+        teamCards: "repeat(auto-fit, minmax(300px, 1fr))",
+      },
+    },
+    screens: {
+      phone: { max: "768px" },
+      desktop: "769px",
     },
   },
   plugins: [],

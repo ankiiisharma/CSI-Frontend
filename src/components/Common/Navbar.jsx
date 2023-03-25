@@ -14,20 +14,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center">
-      <div className="flex items-center">
-        <img src={logo} alt="logo" width={80} height={80} />
+    <nav className='flex justify-between items-center phone:hidden'>
+      <div className='flex items-center'>
+        <img src={logo} alt='logo' width={80} height={80} />
         <div>
-          <p className="font-medium text-2xl text-white ml-2 relative">
+          <p className='font-medium text-2xl text-white ml-2 relative'>
             Computer Society of India
-            <span className="text-chip absolute bottom-3">TM</span>
+            <span className='text-chip absolute bottom-3'>TM</span>
           </p>
-          <p className="font-medium text-sm text-white text-right">
+          <p className='font-medium text-sm text-white text-right'>
             Since 1965
           </p>
         </div>
       </div>
-      <div className="flex justify-evenly items-center gap-8 self-start mt-4">
+      <div className='flex justify-evenly items-center gap-8 self-start mt-4'>
         <div className={getClasses("")} onClick={() => navigate("/")}>
           HOME
         </div>
@@ -41,7 +41,7 @@ const Navbar = () => {
           OUR EVENTS
         </div>
         <div
-          className="text-white/50 text-lg cursor-pointer hover:text-white/80"
+          className='text-white/50 text-lg cursor-pointer hover:text-white/80'
           onClick={() =>
             document.querySelector("#footer").scrollIntoView({
               behavior: "smooth",
