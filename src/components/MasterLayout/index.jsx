@@ -17,7 +17,7 @@ const MasterLayout = ({ currPath }) => {
         {isSmallScreen ? <SideDrawer /> : <Navbar />}
         <div className='flex justify-between items-center phone:flex-col phone:gap-24'>
           <div className='text-white'>
-            <p className='text-6xl font-semibold uppercase'>
+            <p className='text-6xl font-semibold uppercase phone:mt-6'>
               {headerData[currPath].headerText}
             </p>
             <p className='mt-5 text-base font-regular'>
