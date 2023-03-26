@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
 import logo from "../../images/logo.png";
+import ipecLogo from "../../images/ipeclogo.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -16,14 +17,19 @@ const Navbar = () => {
   return (
     <nav className='flex justify-between items-center phone:hidden'>
       <div className='flex items-center'>
-        <img src={logo} alt='logo' width={80} height={80} />
+        <img src={logo} alt='logo' width={60} height={60} />
+        <img
+          src={ipecLogo}
+          alt='logo'
+          width={60}
+          height={60}
+          className='ml-2'
+        />
         <div>
           <p className='font-medium text-2xl text-white ml-2 relative'>
             Computer Society of India
             <span className='text-chip absolute bottom-3'>TM</span>
-          </p>
-          <p className='font-medium text-sm text-white text-right'>
-            Since 1965
+            <span className='ml-2'>- IPEC</span>
           </p>
         </div>
       </div>

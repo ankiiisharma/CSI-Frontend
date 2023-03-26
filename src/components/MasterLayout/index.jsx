@@ -13,11 +13,11 @@ const MasterLayout = ({ currPath }) => {
 
   return (
     <div className='w-screen h-screen'>
-      <div className='w-full h-full desktop:bg-header desktop:bg-no-repeat desktop:bg-cover pt-6 px-10 relative phone:bg-mobileHeader phone:flex phone:justify-center phone:items-center'>
+      <div className='w-full h-full desktop:bg-header desktop:bg-no-repeat desktop:bg-cover pt-6 px-10 relative phone:bg-mobileHeader phone:flex phone:justify-center phone:items-center phone:px-6'>
         {isSmallScreen ? <SideDrawer /> : <Navbar />}
         <div className='flex justify-between items-center phone:flex-col phone:gap-24'>
           <div className='text-white'>
-            <p className='text-6xl font-semibold uppercase phone:mt-8'>
+            <p className='text-6xl font-semibold uppercase'>
               {headerData[currPath].headerText}
             </p>
             <p className='mt-5 text-base font-regular'>

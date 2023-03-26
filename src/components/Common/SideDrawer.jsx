@@ -2,12 +2,25 @@ import { useDisclosure } from "@mantine/hooks";
 import { Burger, Drawer } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
+import logo from "../../images/logo.png";
+import ipecLogo from "../../images/ipeclogo.png";
+
 const SideDrawer = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
   const navigate = useNavigate();
   return (
-    <div className='absolute top-6 left-10'>
+    <div className='absolute top-6 left-6 flex items-center'>
       <Burger opened={opened} onClick={toggle} color='white' />
+      <div className='flex items-center ml-2'>
+        <img src={logo} alt='logo' width={40} height={40} />
+        <img
+          src={ipecLogo}
+          alt='ipec'
+          width={40}
+          height={40}
+          className='ml-2'
+        />
+      </div>
       <Drawer
         opened={opened}
         onClose={close}

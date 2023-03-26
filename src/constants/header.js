@@ -4,9 +4,9 @@ import teamHero from "../images/common/team-hero.png";
 
 export const headerData = {
   home: {
-    headerText: "MORE THAN 10,000 MEMBERS",
+    headerText: "MORE THAN 1200 MEMBERS",
     subheaderText:
-      "CSI has 72 chapters all over India, 511 student branches, and more than 100,000 members including India’s most famous IT industry leaders, brilliant scientists and dedicated academicians.",
+      "The CSI Student Branch at IPEC was incepted in September 2017 under the aegis of Department of Computer Science. It is an official student body with more than 1200 motivated student members of IPEC till date. The benefits and value of CSI membership can be explored from www.csi-india.org.",
     imageUrl: homeHero,
   },
   team: {

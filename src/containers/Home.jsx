@@ -13,43 +13,46 @@ import midVector from "../images/common/mid-vector.svg";
 const Home = () => {
   const { data, isLoading, error } = useFetch("sig/all/");
   return (
-    <div className="flex flex-col items-center justify-center p-10">
-      <div className="px-8 flex flex-row items-center justify-center phone:flex-col phone:gap-20">
+    <div className='flex flex-col items-center justify-center p-10'>
+      <div className='px-8 flex flex-row items-center justify-center phone:flex-col phone:gap-20'>
         <HomeCard
           Icon={about}
-          Heading="About Us"
-          Content="The seed for the Computer Society of India (CSI) was first shown in the year 1965 with a handful of IT enthusiasts
-                        who were a computer user group and felt the need to organize their activities."
+          Heading='About Us'
+          Content='The seed for the Computer Society of India (CSI) was first shown in the year 1965 with a handful of IT enthusiasts
+                        who were a computer user group and felt the need to organize their activities.'
+          link='https://csiindia.org/home/About'
         />
         <HomeCard
           Icon={question}
-          Heading="What We Do"
-          Content="Having 488 student branches and rooted firmly at 73 different locations, CSI has plans of opening more chapters & 
+          Heading='What We Do'
+          Content='Having 488 student branches and rooted firmly at 73 different locations, CSI has plans of opening more chapters & 
             activity centers in smaller towns of the country. The idea is to spread the knowledge, and provide opportunities to as many 
-            interested as possible"
+            interested as possible'
+          link='https://csiindia.org/home/latest/Events'
         />
         <HomeCard
           Icon={award}
-          Heading="CSI Awards"
-          Content="We Recognize Innovations And Indigenous Developments In The Field Of Information Technology In India. CSI Awards 
-            Are Instituted To Acknowledge And Motivate Individuals And Organizations Working In The ICT Field."
+          Heading='CSI Awards'
+          Content='We Recognize Innovations And Indigenous Developments In The Field Of Information Technology In India. CSI Awards 
+            Are Instituted To Acknowledge And Motivate Individuals And Organizations Working In The ICT Field.'
+          link='https://csiindia.org/home/index'
         />
       </div>
-      <div className="w-full uppercase flex flex-col items-center justify-center my-8">
-        <h1 className="my-8 font-semibold text-4xl mb-4">OUR SIGs</h1>
-        <img className="w-[17vw]" src={events_underline} alt="__________" />
+      <div className='w-full uppercase flex flex-col items-center justify-center my-8'>
+        <h1 className='my-8 font-semibold text-4xl mb-4'>OUR SIGs</h1>
+        <img className='w-[17vw]' src={events_underline} alt='__________' />
       </div>
-      <div className="relative w-full">
+      <div className='relative w-full'>
         {isLoading ? <Loader /> : <SigCarousel sigs={data} />}
         <img
           src={midVector}
-          alt="vector"
-          className="absolute z-[-1] left-0 top-0 phone:-left-10"
+          alt='vector'
+          className='absolute z-[-1] left-0 top-0 phone:-left-10'
         />
         <img
           src={midVector}
-          alt="vector"
-          className="absolute z-[-1] right-0 top-0 phone:-right-12"
+          alt='vector'
+          className='absolute z-[-1] right-0 top-0 phone:-right-12'
         />
       </div>
     </div>
