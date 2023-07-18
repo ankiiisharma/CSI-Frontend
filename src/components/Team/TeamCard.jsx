@@ -1,10 +1,12 @@
 import { AiFillGithub, AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
 
+const cdnKey = "cj8tverfiv";
+
 const TeamCard = ({ data }) => {
   return (
     <div className='shadow-teamCard w-[300px] flex flex-col items-center justiy-center py-6 rounded-xl'>
       <img
-        src={`https://ik.imagekit.io/cj8tverfiv/${data?.imgage_key}?updatedAt=1679595396784&tr=w-1080%2Ch-1080%2Cfo-auto`}
+        src={`https://ik.imagekit.io/${cdnKey}/${data?.imgage_key}?tr=w-1080%2Ch-1080%2Cfo-auto`}
         alt='member-photo'
         className='rounded-full w-[150px] h-[150px] object-cover'
       />
