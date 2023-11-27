@@ -1,6 +1,6 @@
 import { AiFillGithub, AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
 
-const cdnKey = "cj8tverfiv";
+const cdnKey = "td0ht2ygc";
 
 const TeamCard = ({ data }) => {
   return (
