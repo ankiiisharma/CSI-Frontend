@@ -17,7 +17,7 @@
     "@mantine/hooks": "^6.0.4",
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
-    "parcel": "^2.8.3",
+    "parcel": "^2.10.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
@@ -27,8 +27,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
-    "@parcel/packager-raw-url": "2.8.3",
-    "@parcel/transformer-webmanifest": "2.8.3",
+    "@parcel/packager-raw-url": "^2.10.3",
+    "@parcel/transformer-webmanifest": "^2.10.3",
     "postcss": "^8.4.21",
     "process": "^0.11.10",
     "tailwindcss": "^3.2.6"
