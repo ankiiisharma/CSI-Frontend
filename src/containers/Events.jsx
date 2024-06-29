@@ -15,21 +15,29 @@ import events_underline from "../images/events-underline.svg";
 import month_names from "../data/month_names";
 
 // Event Cards Mapped
+
 function Items({ currentItems }) {
   return (
     <>
-      {currentItems.map((item) => (
-        <EventCard
-          key={item.id}
-          img={`https://drive.google.com/uc?export=view&id=${item.Poster_link}`}
-          title={item.name}
-          datetime={item.Date}
-          location={item.venue}
-          description={item.Description}
-          regLink={item.reg_link}
-          price={item.price ?? "FREE"}
-        />
-      ))}
+      {currentItems.map((item) => {
+        const imgUrl = `${item.Poster_link}`;
+        console.log("Image URL:", imgUrl);
+
+        return (
+          <EventCard
+            key={item.id}
+            img={imgUrl}
+            src={imgUrl}
+            title={item.name}
+            datetime={item.Date}
+            location={item.venue}
+            description={item.Description}
+            regLink={item.reg_link}
+            price={item.price ?? "FREE"}
+          />
+        );
+      })}
+          
     </>
   );
 }
@@ -68,7 +76,7 @@ const Events = ({ itemsPerPage = 4 }) => {
           (event) => event.category === filters.category
         );
     }
-    setEvents(updatedEvents)
+    setEvents(updatedEvents);
   }, [filters]);
 
   const endOffset = itemOffset + itemsPerPage;
@@ -84,35 +92,35 @@ const Events = ({ itemsPerPage = 4 }) => {
   if (error) return "";
 
   return (
-    <div className='flex flex-col items-center justify-center p-10'>
-      <div className='w-full uppercase flex flex-col items-center justify-center mb-8'>
-        <h1 className='font-semibold text-4xl mb-4'>Events</h1>
-        <img className='' src={events_underline} alt='__________' />
+    <div className="flex flex-col items-center justify-center p-10">
+      <div className="w-full uppercase flex flex-col items-center justify-center mb-8">
+        <h1 className="font-semibold text-4xl mb-4">Events</h1>
+        <img className="" src={events_underline} alt="__________" />
       </div>
 
-      <div className='bg-white border border-[#e3e3e3] flex justify-between items-center mb-10 w-4/5 px-4 py-1 rounded-md shadow-teamCard phone:hidden'>
-        <BiSearch className='text-[#888888]' fontSize={24} />
+      <div className="bg-white border border-[#e3e3e3] flex justify-between items-center mb-10 w-4/5 px-4 py-1 rounded-md shadow-teamCard phone:hidden">
+        <BiSearch className="text-[#888888]" fontSize={24} />
         <input
-          type='text'
-          placeholder='Search for events'
-          className='w-5/12 outline-none border-r border-secondary-shades2'
+          type="text"
+          placeholder="Search for events"
+          className="w-5/12 outline-none border-r border-secondary-shades2"
         />
 
         <select
-          className='w-2/12 outline-none text-[#888888] border-r border-secondary-shades2'
+          className="w-2/12 outline-none text-[#888888] border-r border-secondary-shades2"
           onChange={(e) =>
             setFilters((prev) => ({ ...prev, category: e.target.value }))
           }
         >
-          <option default value='all'>
+          <option default value="all">
             Select Category
           </option>
-          <option value='Tech'>Technical</option>
-          <option value='Non-Tech'>Non Technical</option>
+          <option value="Tech">Technical</option>
+          <option value="Non-Tech">Non Technical</option>
         </select>
 
-        <select className='w-2/12 outline-none text-[#888888]'>
-          <option default value='all'>
+        <select className="w-2/12 outline-none text-[#888888]">
+          <option default value="all">
             Select Month
           </option>
           {month_names.map((month) => (
@@ -121,8 +129,8 @@ const Events = ({ itemsPerPage = 4 }) => {
         </select>
 
         <button
-          type='submit'
-          className='w-2/12 text-white py-3 rounded-md font-bold bg-gradient-to-t'
+          type="submit"
+          className="w-2/12 text-white py-3 rounded-md font-bold bg-gradient-to-t"
           style={{
             background: "linear-gradient(180deg, #183882 6.17%, #001649 100%)",
           }}
@@ -130,31 +138,31 @@ const Events = ({ itemsPerPage = 4 }) => {
           SEARCH
         </button>
       </div>
-      <div className='desktop:hidden w-full'>
-        <div className='flex items-center bg-white px-3 rounded-md border border-[#e3e3e3]'>
-          <BiSearch className='text-[#888888]' fontSize={24} />
+      <div className="desktop:hidden w-full">
+        <div className="flex items-center bg-white px-3 rounded-md border border-[#e3e3e3]">
+          <BiSearch className="text-[#888888]" fontSize={24} />
           <input
-            type='text'
-            placeholder='Search for events'
-            className='w-full outline-none py-2 ml-2'
+            type="text"
+            placeholder="Search for events"
+            className="w-full outline-none py-2 ml-2"
           />
         </div>
-        <div className='flex items-center gap-3 mt-3'>
+        <div className="flex items-center gap-3 mt-3">
           <select
-            className='flex-1 outline-none text-[#888888] py-2 px-3 rounded-md border border-[#e3e3e3]'
+            className="flex-1 outline-none text-[#888888] py-2 px-3 rounded-md border border-[#e3e3e3]"
             onChange={(e) =>
               setFilters((prev) => ({ ...prev, category: e.target.value }))
             }
           >
-            <option default value='all'>
+            <option default value="all">
               Select Category
             </option>
-            <option value='Tech'>Technical</option>
-            <option value='Non-Tech'>Non Technical</option>
+            <option value="Tech">Technical</option>
+            <option value="Non-Tech">Non Technical</option>
           </select>
 
-          <select className='flex-1 outline-none text-[#888888] py-2 px-3 rounded-md border border-[#e3e3e3]'>
-            <option default value='all'>
+          <select className="flex-1 outline-none text-[#888888] py-2 px-3 rounded-md border border-[#e3e3e3]">
+            <option default value="all">
               Select month
             </option>
             {month_names.map((month) => (
@@ -163,8 +171,8 @@ const Events = ({ itemsPerPage = 4 }) => {
           </select>
         </div>
         <button
-          type='submit'
-          className='text-white py-3 rounded-md font-bold w-full mt-3'
+          type="submit"
+          className="text-white py-3 rounded-md font-bold w-full mt-3"
           style={{
             background: "linear-gradient(180deg, #183882 6.17%, #001649 100%)",
           }}
@@ -178,7 +186,7 @@ const Events = ({ itemsPerPage = 4 }) => {
       ) : events.length > 0 ? (
         <Items currentItems={events} />
       ) : (
-        <p className='text-xl'>No Events found for your Selection!!</p>
+        <p className="text-xl">No Events found for your Selection!!</p>
       )}
       {/* <ReactPaginate
         breakLabel='...'
